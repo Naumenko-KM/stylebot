@@ -5,7 +5,7 @@ from PIL import Image
 from aiogram import Bot, Dispatcher, executor, filters, types
 import os
 from pprint import pprint
-import style_transfer_bot
+import neural_style_transfer
 import time
 
 
@@ -37,21 +37,22 @@ async def handle_docs_photo(message):
 		await bot.send_message(message.from_user.id, 'Изображение со стилем загружено! \n /mystyle')
 		content = False
 
-
+	# NST 
 @dp.message_handler(commands=['mystyle'])
 async def return_img(message: types.Message):
 	global content
 	content = False
 	await bot.send_message(message.from_user.id, 'Придется подождать несколько минут...')
-	style_img = style_transfer_bot.image_loader(cur_dir + r"\images\style.jpg")# as well as here
-	content_img = style_transfer_bot.image_loader(cur_dir + r"\images\content.jpg")#измените путь на тот который у вас.
+	style_img = neural_style_transfer.image_loader(cur_dir + r"\images\style.jpg")# as well as here
+	content_img = neural_style_transfer.image_loader(cur_dir + r"\images\content.jpg")#измените путь на тот который у вас.
 
-	style_transfer = style_transfer_bot.StyleTransfer()
-	output_img = style_transfer.run_style_transfer(content_img, style_img)
-	style_transfer_bot.imsave(output_img, name="images/output.png")
+	style_transfer = neural_style_transfer.StyleTransfer()
+	output_img = neural_style_transfer.run_style_transfer(content_img, style_img)
+	neural_style_transfer.imsave(output_img, name="images/output.png")
 	await bot.send_photo(message.from_user.id, photo=open("images/output.png", "rb"))
 
-
+	# Cyclegan для переноса стиля (4 на выбор)
+	# Вызываем cyclegan через команду в терминале, чтобы не менять код под себя
 @dp.message_handler(commands=['ukiyoe', 'vangogh', 'monet', 'cezanne'])
 async def return_img(message: types.Message):
 	global content
