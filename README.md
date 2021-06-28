@@ -19,3 +19,7 @@ This Bot uses both NST and Cyclegan networks.
 * Для полноценной работы бота надо скачать веса vgg19 и поместить в корневую папку бота https://download.pytorch.org/models/vgg19-dcbb9e9d.pth
 * Бот будет работать некоторое время на моем компьютере
 * Косяков невероятное количество, но основной функционал работает
+
+![image](https://user-images.githubusercontent.com/55506320/123704001-d5817c80-d86d-11eb-9153-1778f4af2937.png)
+![image](https://user-images.githubusercontent.com/55506320/123704034-e205d500-d86d-11eb-8b06-d03acce5dabb.png)
+![image](https://user-images.githubusercontent.com/55506320/123704054-e9c57980-d86d-11eb-9856-2c8608762e8a.png)
