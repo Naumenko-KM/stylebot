@@ -1,5 +1,6 @@
 # stylebot
 Telegram Bot with style transfer
+@Style_Transfer_DLS2021_bot
 
 This Bot uses both NST and Cyclegan networks.
 
